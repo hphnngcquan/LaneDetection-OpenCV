@@ -7,7 +7,7 @@ Project Development Plan:
 ---
 ## Camera Calibration
 - Prepare 9x6 pattern chessboard for calibration
-![Chessboard Pattern for Calibration](program\calib\9x6_pattern.jpg)
+![Chessboard Pattern for Calibration](program/calib/9x6_pattern.jpg)
 <p align = "center">
 9x6 chessboard pattern
 
@@ -15,7 +15,7 @@ Project Development Plan:
 - Draw Chessboard Connners
 - Undistort Test Image
 - Result
-![Calibration Result for Test Image](program\calib\calibresult.jpg)
+![Calibration Result for Test Image](program/calib/calibresult.jpg)
 <p align = "center">
 Calibration Result for Test Image
 
