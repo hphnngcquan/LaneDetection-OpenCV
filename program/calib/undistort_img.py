@@ -1,11 +1,12 @@
 import numpy as np
-import matplotlib.image as mpimg
+# import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import cv2
-import os
+# import os
 # import sys
 import glob
-# def calibrate(is_save = False):
+import pickle
+
 # termination criteria
 criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 # prepare object points, like (0,0,0), (1,0,0), (2,0,0) ....,(6,5,0)
@@ -29,10 +30,38 @@ for fname in images:
         corners2 = cv2.cornerSubPix(gray,corners, (11,11), (-1,-1), criteria)
         imgpoints.append(corners)
         cv2.drawChessboardCorners(img, (9,6), corners2, ret)
-        cv2.namedWindow('img', cv2.WINDOW_NORMAL)
-        # cv2.setWindowProperty('image', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-        cv2.imshow('img', img)
-        cv2.waitKey(0)
-cv2.destroyAllWindows()
+    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
+
+
+
+# Test undistortion on an image
+img = cv2.imread('program/calib/Calibration1.jpg')
+img_size = (img.shape[1], img.shape[0])
+
+# Do camera calibration given object points and image points
+ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img_size,None,None)
+
+
+dst = cv2.undistort(img, mtx, dist, None, mtx)
+# cv2.imwrite('program/calib/calibresult.jpg',dst)
+
+
+#dst = cv2.cvtColor(dst, cv2.COLOR_BGR2RGB)
+# Visualize undistortion
+f, (ax1, ax2) = plt.subplots(1, 2, figsize=(30,10))
+
+ax1.imshow(img)
+ax1.set_title('Original Image', fontsize=30)
+ax2.imshow(dst)
+ax2.set_title('Undistorted Image', fontsize=30)
+plt.savefig('program/calib/calibresult.jpg')
+plt.show()
+
+
+#         cv2.namedWindow('img', cv2.WINDOW_NORMAL)
+#         # cv2.setWindowProperty('image', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+#         cv2.imshow('img', img)
+#         cv2.waitKey(0)
+# cv2.destroyAllWindows()
     
    
