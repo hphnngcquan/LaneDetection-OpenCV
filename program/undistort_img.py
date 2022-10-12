@@ -1,11 +1,7 @@
 import numpy as np
-# import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import cv2
-# import os
-# import sys
 import glob
-import pickle
 
 # termination criteria
 criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
@@ -43,10 +39,8 @@ ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img_siz
 
 
 dst = cv2.undistort(img, mtx, dist, None, mtx)
-# cv2.imwrite('program/calib/calibresult.jpg',dst)
 
 
-#dst = cv2.cvtColor(dst, cv2.COLOR_BGR2RGB)
 # Visualize undistortion
 f, (ax1, ax2) = plt.subplots(1, 2, figsize=(30,10))
 
@@ -58,10 +52,6 @@ plt.savefig('program/calib/calibresult.jpg')
 plt.show()
 
 
-#         cv2.namedWindow('img', cv2.WINDOW_NORMAL)
-#         # cv2.setWindowProperty('image', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-#         cv2.imshow('img', img)
-#         cv2.waitKey(0)
-# cv2.destroyAllWindows()
+
     
    
