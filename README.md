@@ -7,7 +7,7 @@ Project Development Plan:
 ---
 ## Camera Calibration
 - Prepare 9x6 pattern chessboard for calibration
-![Chessboard Pattern for Calibration](program/calib/9x6_pattern.jpg)
+![Chessboard Pattern for Calibration](/calib/9x6_pattern.jpg)
 <p align = "center">
 9x6 chessboard pattern
 
@@ -15,7 +15,7 @@ Project Development Plan:
 - Draw Chessboard Connners
 - Undistort Test Image
 - Result
-![Calibration Result for Test Image](program/calib/calibresult.jpg)
+![Calibration Result for Test Image](/output_images/chessboard_conners//calibresult.jpg)
 <p align = "center">
 Calibration Result for Test Image
 
@@ -23,8 +23,15 @@ Calibration Result for Test Image
 For Reference: [OpenCV Camera Calibration Tutorial in Python](https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html)
 
 ## Preprocessing
-### ROI
-### Road Segmentation
+### Bird's Eye View
+The chosen source and destination point
+
+| Source        | Destination   |View|  
+|:-------------:|:-------------:| :-------:| 
+| 190, 720     | x, 0        | Bottom left|
+| 596, 447      | x, 720      | Top left|
+| 685, 447     | x, 720      | Top right|
+| 1125, 720      | x, 0        | Bottom right|
 
 
 
