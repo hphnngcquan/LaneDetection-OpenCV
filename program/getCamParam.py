@@ -1,7 +1,7 @@
 import cv2
 
 vcap = cv2.VideoCapture(0) # 0=camera
- 
+
 if vcap.isOpened(): 
     # get vcap property 
     print("width", vcap.get(cv2.CAP_PROP_FRAME_WIDTH))   # float `width`
